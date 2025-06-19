@@ -8,18 +8,16 @@ const port = 8000
 // })
 
 // 将public设置为静态资源目录以后会默认访问index.html
-app.use(express.static('public')) 
+app.use(express.static('public'))
 app.use(express.static('images')) // 不指定路径，http://localhost:8000/success_icon.png
-app.use('/images',express.static('images')) // 指定路径，http://localhost:8000/images/success_icon.png
+app.use('/images', express.static('images')) // 指定路径，http://localhost:8000/images/success_icon.png
 
 app.get('/user/:id', (req, res) => {
-	console.log('params', req.params)
-	console.log('query', req.query)
-	res.send(req.params.id)
+  console.log('params', req.params)
+  console.log('query', req.query)
+  res.send(req.params.id)
 })
-
 
 app.listen(port, () => {
-	console.log(`app is running at http://localhost:${port}`)
+  console.log(`app is running at http://localhost:${port}`)
 })
-
