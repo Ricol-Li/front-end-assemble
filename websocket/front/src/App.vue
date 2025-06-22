@@ -1,26 +1,13 @@
 <script setup>
-// 1. 实例化
-let ws = new WebSocket("ws://localhost:3001");
-// 2.open
-ws.onopen = function () {
-  console.log("连接成功");
+import { onMounted } from "vue";
 
-  // 客户端给服务端发送数据
-  ws.send("hello");
-};
-// 3.message
-ws.onmessage = function (e) {
-  // 服务端给客户端发送的数据
-  console.log('服务端给客户端发送的数据', e.data);
-};
-// 4.close
-ws.onclose = function () {
-  console.log("连接关闭");
-};
-// 5.error
-ws.onerror = function () {
-  console.log("连接错误");
-};
+import Socket from "./utils/socket.js";
+
+const socket = new Socket('ws://localhost:3001');
+
+onMounted(() => {
+  socket.connectWebSocket()
+})
 
 </script>
 

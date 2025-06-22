@@ -17,7 +17,12 @@ const server = new WebSocket(
 
 function connectionHandler(ws) {
   console.log('有新的连接')
-  ws.send('欢迎链接到 Websocket服务器')
+  ws.send(
+    JSON.stringify({
+      ModeCode: 'message',
+      message: '欢迎链接到 Websocket服务器',
+    })
+  )
   // 接收客户端发送的消息
   ws.on('message', messageHandler)
 
@@ -29,9 +34,21 @@ function connectionHandler(ws) {
 }
 
 function messageHandler(data) {
-  // const parseData = JSON.parse(data)
-  const message = Buffer.isBuffer(data) ? data.toString() : data
-  console.log('收到客户端的消息：', message)
+  const parseData = JSON.parse(data.toString())
+  console.log('收到客户端的消息：', parseData)
+
+  // 服务端心跳检查
+  const { ModeCode } = parseData
+  switch (ModeCode) {
+    case 'message':
+      console.log('收到普通的消息', parseData)
+      break
+    // 收到的是心跳检查的消息，再回传给客户端
+    case 'heart_beat':
+      console.log('收到心跳检查，并返回客户端数据，保证连接正常')
+      this.send(JSON.stringify(parseData))
+      break
+  }
 }
 function sendMessage(ws, message) {
   if (ws.readyState === ws.OPEN) {
