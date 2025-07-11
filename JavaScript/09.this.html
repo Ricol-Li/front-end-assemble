@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /**
+     * this 是和执行上下文绑定的，
+     * js中只有三种执行上下文
+     * 1.全局执行上下文
+     * 2.函数执行上下文
+     * 3.eval执行上下文
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * */
+    var myObj = {
+      name : "极客时间", 
+      showThis: function(){
+        console.log(this)
+      }
+    }
+    myObj.showThis()
+    /**
+     * 解析：
+     *   按理解来看，myObj.showThis()中的this应该指向myObj对象，
+     *   但是this指向myObj对象，而不是window对象
+     *   使用对象来调用其内部的一个方法，该方法的 this 是指向对象本身的。
+     *   其实，你也可以认为 JavaScript 引擎在执行myObject.showThis()时，将其转化为了myObj.showThis.call(myObj)
+     * */
+
+  </script>
+</body>
+</html>

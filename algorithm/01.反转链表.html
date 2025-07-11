@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 反转链表 1 2 3 4 5 => 5 4 3 2 1
+    const a = { value: 1 };
+    const b = { value: 2 };
+    const c = { value: 3 };
+    const d = { value: 4 };
+    const e = { value: 5 };
+    a.next = b;
+    b.next = c;
+    c.next = d;
+    d.next = e;
+    e.next = null;
+
+    function reverseList(head) {
+      let prev = null;
+      let current = head;
+       
+      while (current !== null) {
+        const nextTemp = current.next; // 保存下一个节点
+        current.next = prev;          // 反转指针
+        prev = current;               // prev向前移动
+        current = nextTemp;           // current向前移动
+        console.log('循环prev', prev)
+        console.log('循环current', current)
+        console.log('--------------------')
+      }
+
+     
+
+      return prev; // 新的头节点
+    }
+    /**
+     * 分析：
+     *   第一次循环：
+     *    1-> null , 2->3->4->5-null  prev = 1 current = 2 
+     */
+
+    console.log(reverseList(a));
+  </script>
+</body>
+
+</html>

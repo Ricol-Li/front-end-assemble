@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function CreateObj() {
+      this.name = "极客时间"
+    }
+    var myObj = new CreateObj()
+
+    /**
+     * 其实，当执行 new CreateObj() 的时候，JavaScript 引擎做了如下四件事：
+     * 
+     * 首先创建了一个空对象 tempObj；
+     * 
+     * 接着调用 CreateObj.call 方法，
+     *  并将 tempObj 作为 call 方法的参数，
+     *  这样当 CreateObj 的执行上下文创建时，它的 this 就指向了 tempObj 对象；
+     * 
+     * 然后执行 CreateObj 函数，此时的 CreateObj 函数执行上下文中的 this 指向了 tempObj 对象；
+     * 最后返回 tempObj 对象。
+    */
+  </script>
+</body>
+
+</html>
