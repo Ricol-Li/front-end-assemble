@@ -5,6 +5,7 @@ import MyComponent from './pages/02.component/MyComponent'
 import UseState from './pages/03.hooks/01.useState'
 import UseRef from './pages/03.hooks/02.useRef'
 import UseEffect from './pages/03.hooks/03.useEffect'
+import UseMemo from './pages/03.hooks/04.useMemo'
 
 const menu = [
   {
@@ -31,6 +32,11 @@ const menu = [
     path: '/useEffect',
     name: 'useEffect',
     component: UseEffect,
+  },
+  {
+    path: '/useMemo',
+    name: 'useMemo',
+    component: UseMemo,
   },
 ]
 
