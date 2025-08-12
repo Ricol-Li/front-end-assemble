@@ -1,11 +1,13 @@
 import './App.css'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router'
 import Jxs from './pages/01.JSX/Jsx'
 import MyComponent from './pages/02.component/MyComponent'
 import UseState from './pages/03.hooks/01.useState'
 import UseRef from './pages/03.hooks/02.useRef'
 import UseEffect from './pages/03.hooks/03.useEffect'
 import UseMemo from './pages/03.hooks/04.useMemo'
+import UseCallback from './pages/03.hooks/05.useCallback'
+import UseContext from './pages/03.hooks/06.useContext'
 
 const menu = [
   {
@@ -38,13 +40,23 @@ const menu = [
     name: 'useMemo',
     component: UseMemo,
   },
+  {
+    path: '/useCallback',
+    name: 'useCallback',
+    component: UseCallback,
+  },
+  {
+    path: '/useContext',
+    name: 'useContext',
+    component: UseContext,
+  },
 ]
 
 function App() {
   console.log('App 组件渲染')
   return (
     <BrowserRouter>
-      <ul>
+      <ul className="menu">
         {menu.map(item => (
           <li key={item.path}>
             <a href={item.path}>{item.name}</a>
